@@ -4,3 +4,12 @@
   <%= render :partial => "form" %>
 
 <% end %>
+
+<% if @show_merge %>
+  <%= form_tag("/admin/content/merge") do %>
+  <h4><%= _("Merge Articles") %></h4>
+  <input type="text" name="merge" placeholder= "Article ID">
+  <input type="hidden" name="current" value="<%= params[:id] %>">
+  <input type="submit" value="Merge" />
+  <% end %>
+<% end %>

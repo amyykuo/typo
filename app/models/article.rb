@@ -88,7 +88,21 @@ class Article < Content
                                :post_trigger,
                                :send_pings, :send_notifications,
                                :published_at=, :just_published?])
-
+  
+  # MERGE MODEL THING
+  def merge_with(id)
+    merge_article = Article.find(id)
+    if !merge_article.nil?
+      self.body += merge_article.body
+      self.comments += merge_article.comments
+      self.save!
+      merge_article.destroy
+      return true
+    else
+      return false
+    end
+  end
+  # MERGE MODEL THING
   include Article::States
 
   class << self

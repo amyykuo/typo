@@ -50,4 +50,9 @@ group :development, :test do
   gem 'rspec-rails', '>= 2.0.0.beta.20'
   gem 'simplecov', :require => false
   gem 'sqlite3'
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
 end

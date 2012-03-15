@@ -21,7 +21,6 @@ describe ArticlesController do
     Factory(:blog, :custom_tracking_field => '<script src="foo.js" type="text/javascript"></script>') 
   end
 
-
   it "should redirect category to /categories" do
     get 'category'
     response.should redirect_to(categories_path)
