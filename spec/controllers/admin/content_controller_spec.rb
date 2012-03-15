@@ -485,7 +485,7 @@ describe Admin::ContentController do
     it_should_behave_like 'autosave action'
 
     describe 'edit action' do
-
+      
       it 'should edit article' do
         get :edit, 'id' => @article.id
         response.should render_template('new')

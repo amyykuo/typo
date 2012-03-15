@@ -13,7 +13,29 @@ describe Article do
 
     @articles = []
   end
-
+  
+  describe 'merge_with method' do
+    describe 'success' do
+      it 'should combine everything' do 
+        article1 = Article.create!(:title => 'hey', :body => 'there', :published => true)
+        article2 = Article.create!(:title => 'good', :body => 'bye', :published => true)
+        comment1 = Factory(:comment, :article => article1)
+        comment2 = Factory(:comment, :article => article2)
+        
+        article1.merge_with(article2.id)
+        article1.body.should == 'therebye'
+        article1.comments.count.should == 2
+      end
+    describe 'fail' do
+      it 'should return false' do
+        article1 = Article.create!(:title => 'hey', :body => 'there', :published => true)
+        article2 = Article.create!(:title => 'hey', :body => 'there', :published => false)
+      end
+    end  
+    end
+    
+  end  
+  
   def assert_results_are(*expected)
     assert_equal expected.size, @articles.size
     expected.each do |i|

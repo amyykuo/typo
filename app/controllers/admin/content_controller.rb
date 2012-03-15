@@ -31,15 +31,13 @@ class Admin::ContentController < Admin::BaseController
     merge_id = params[:merge]
     current_article = Article.find(current_id)
     success = current_article.merge_with(merge_id)
+
     if success
       flash[:notice] = "awesome"
-      redirect_to "/admin/content" # redirect to content page fix this bitch
-      return
     else
       flash[:notice] = "sucks"
-      redirect_to "/admin/content" # redirect to content page fix this bitch
-      return
     end
+   redirect_to "/admin/content" # redirect to content page fix this bitch
   end  
   
   def new
@@ -48,10 +46,9 @@ class Admin::ContentController < Admin::BaseController
 
   def edit
     @article = Article.find(params[:id])
+    @show_merge = false
     if current_user.admin?
       @show_merge = true
-    else
-      @show_merge = false
     end
     unless @article.access_by? current_user
       redirect_to :action => 'index'

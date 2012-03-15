@@ -91,14 +91,18 @@ class Article < Content
   
   # MERGE MODEL THING
   def merge_with(id)
-    merge_article = Article.find(id)
-    if !merge_article.nil?
-      self.body += merge_article.body
-      self.comments += merge_article.comments
+    begin
+    #if !merge_article.nil?
+    #  if self.body.nil?
+    #    self.body = merge_article.body
+    #  else
+      self.body += Article.find(id).body
+    #  end
+      self.comments += Article.find(id).comments
       self.save!
-      merge_article.destroy
+      Article.find(id).destroy
       return true
-    else
+    rescue
       return false
     end
   end
