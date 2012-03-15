@@ -26,13 +26,14 @@ describe Article do
         article1.body.should == 'therebye'
         article1.comments.count.should == 2
       end
+    end
     describe 'fail' do
       it 'should return false' do
         article1 = Article.create!(:title => 'hey', :body => 'there', :published => true)
-        article2 = Article.create!(:title => 'hey', :body => 'there', :published => false)
+        article1.merge_with('69').should == false
+        
       end
     end  
-    end
     
   end  
   

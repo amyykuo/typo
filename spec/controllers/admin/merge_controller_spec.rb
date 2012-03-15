@@ -20,22 +20,23 @@ render_views
           assigns(:show_merge).should == true 
         end
       end
+    end
       
-      describe 'user is not an admin' do
-        it 'should check set show_merge to true if the user is an admin' do
-          Factory(:blog)
-          #TODO delete this after remove fixture
-          Profile.delete_all
-          @user = Factory(:user, :text_filter => Factory(:markdown), :profile => Factory(:profile_publisher))
-          @user.editor = 'simple'
-          @user.save
-          @article = Factory(:article)
-          request.session = { :user => @user.id }
-          put :edit, 'id' => @article.id
-          assigns(:show_merge).should == false
-        end
+    describe 'user is not an admin' do
+      it 'should check set show_merge to true if the user is an admin' do
+        Factory(:blog)
+        #TODO delete this after remove fixture
+        Profile.delete_all
+        @user = Factory(:user, :text_filter => Factory(:markdown), :profile => Factory(:profile_publisher))
+        @user.editor = 'simple'
+        @user.save
+        @article = Factory(:article)
+        request.session = { :user => @user.id }
+        put :edit, 'id' => @article.id
+        assigns(:show_merge).should == false
       end
     end
+  end
   
   describe 'calls merge method' do
 
@@ -71,7 +72,5 @@ render_views
     end
   end
   
-  
-  end
   
 end

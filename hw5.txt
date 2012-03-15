@@ -1,0 +1,10 @@
+Typo URI: http://strong-sky-1248.heroku.com
+
+Username: admin
+
+Password: cJMYBDq
+
+Github Repo: https://github.com/amyykuo/typo
+
+Group Members: Amy Kuo
+               Sylvia Lin
