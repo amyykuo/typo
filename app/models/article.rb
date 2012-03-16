@@ -91,7 +91,7 @@ class Article < Content
   
   # MERGE MODEL THING
   def merge_with(id)
-    if self.id == id
+    if self.id.to_s == id.to_s
       return false
     end
     begin
