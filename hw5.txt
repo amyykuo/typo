@@ -2,7 +2,7 @@ Typo URI: http://strong-sky-1248.heroku.com
 
 Username: admin
 
-Password: cJMYBDq
+Password: i5OA0c0
 
 Github Repo: https://github.com/amyykuo/typo
 
