@@ -96,6 +96,10 @@ class Article < Content
     #  if self.body.nil?
     #    self.body = merge_article.body
     #  else
+      if self.id == id
+        return false
+      end
+      
       self.body += Article.find(id).body
     #  end
       self.comments += Article.find(id).comments
