@@ -28,10 +28,17 @@ describe Article do
       end
     end
     describe 'fail' do
-      it 'should return false' do
-        article1 = Article.create!(:title => 'hey', :body => 'there', :published => true)
-        article1.merge_with('69').should == false
-        
+      describe 'if merge with self' do
+        it 'should return false' do
+          article1 = Article.create!(:title => 'hey', :body => 'there', :id => '69', :published => true)
+          article1.merge_with('69').should == false
+        end
+      end
+      describe 'if merge with invalid id' do
+        it 'should return false' do
+          article1 = Article.create!(:title => 'hey', :body => 'there', :published => true)
+          article1.merge_with('69').should == false
+        end
       end
     end  
     
